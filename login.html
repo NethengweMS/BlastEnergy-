@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Blast Energy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Blast Energy</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="register.html">Register</a>
+  </nav>
+</header>
+
+<section class="form-section">
+  <h2>Login</h2>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <p>Don't have an account? <a href="register.html">Register</a></p>
+</section>
+
+<script>
+const form = document.getElementById('login-form');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Admin login
+  if(email === "admin@blastenergy.com" && password==="admin123"){
+    window.location.href = "admin.html";
+    return;
+  }
+
+  const user = users.find(u=>u.email===email && u.password===password);
+  if(user){
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    alert("Login successful!");
+    window.location.href = "index.html";
+  } else {
+    alert("Invalid email or password!");
+  }
+});
+</script>
+</body>
+</html>

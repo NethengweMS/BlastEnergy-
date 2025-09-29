@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blast Energy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1 onclick="goHome()">⚡ Blast Energy</h1>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+    <div class="cart" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Fuel Your Energy, Anytime ⚡</h2>
+  <p>Stay energized for gaming, workouts, and late-night studying.</p>
+</section>
+
+<section class="products" id="product-list"></section>
+
+<!-- Cart button -->
+<div class="cart" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+
+<!-- Cart page -->
+<section class="cart-page" id="cart-page">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <div class="checkout">
+    <p id="total-price">Total: R0</p>
+    <button onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</section>
+
+<!-- Checkout page -->
+<section class="checkout-page" id="checkout-page">
+  <h2>Checkout</h2>
+  <form onsubmit="submitOrder(event)">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="address" placeholder="Delivery Address" required>
+    <select id="payment" required>
+      <option value="">Select Payment Method</option>
+      <option value="card">Credit/Debit Card</option>
+      <option value="cod">Cash on Delivery</option>
+    </select>
+    <button type="submit">Complete Purchase</button>
+  </form>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
